@@ -8,9 +8,10 @@ const session = require('express-session')
 const expressValidator = require('express-validator')
 const flash = require('connect-flash')
 const mongoose = require('mongoose')
- 
+var router = require('./routes/index');
 // 1
-const products = require('./routes/products');
+//const router = require('./routes');
+//const users = require('./routes/users');
 //const books = require('./routes/books');
  
 var app = express();
@@ -65,7 +66,8 @@ app.use(function (req, res, next) {
 })
  
 // 6
-app.use('/products', products);
+app.use('/', router);
+//app.use('/users', users);
 //app.use('/books', books);
  
 // catch 404 and forward to error handler
