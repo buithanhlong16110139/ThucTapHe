@@ -7,3 +7,6 @@ ví dụ về Restful API link github: https://github.com/buithanhlong16110139/T
 - tên thuộc tính và collection viết bằng tiếng anh
 - không viết gạch dưới "_" mà viết hoa chữ cái đầu của phần phía sau tên thuộc tính
 - viết đầy tên thuộc tính và collection, tránh viết tắt trừ khi cụm danh từ quá dài(đặc biệt)
+
+3. Link tham khảo
+- https://code.tutsplus.com/vi/tutorials/build-web-application-using-nodejs--cms-29652
