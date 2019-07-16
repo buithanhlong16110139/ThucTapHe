@@ -1,12 +1,13 @@
 1. Restful API
 - chỉ cần thay đổi phương thức, không thay đổi đường dẫn khác (chuẩn restful)
 ví dụ về Restful API link github: https://github.com/buithanhlong16110139/ThucTapHe
-2.Cách đặt tên
+2. Cách đặt tên
 - tên trong db là danh từ hoặc cụm danh từ
 - trong cụm danh từ danh từ chính luôn nằm cuối cùng
 - tên thuộc tính và collection viết bằng tiếng anh
 - không viết gạch dưới "_" mà viết hoa chữ cái đầu của phần phía sau tên thuộc tính
 - viết đầy tên thuộc tính và collection, tránh viết tắt trừ khi cụm danh từ quá dài(đặc biệt)
-
-3. Link tham khảo
+3. Ưu tiên vấn đề bảo mật
+- Sử dụng bcrypt để mã hóa mật khẩu (bảo mật hơn các module khác - tốc độ mã hóa thấp hơn)
+***** Link tham khảo
 - https://code.tutsplus.com/vi/tutorials/build-web-application-using-nodejs--cms-29652

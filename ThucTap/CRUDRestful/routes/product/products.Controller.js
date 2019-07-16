@@ -2,6 +2,7 @@ var Product = require('./products.Model');
 var mongoose = require('mongoose');
 var productService = require('./products.Service');
 
+
 exports.create = function (req, res) {//Create a item
     // if(productService.validateAddProduct )
     // console.log(productService.validateAddProduct(req.body.name));
