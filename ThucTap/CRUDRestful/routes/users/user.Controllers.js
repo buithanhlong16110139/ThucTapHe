@@ -41,6 +41,10 @@ exports.signup = function (req, res) {
     // }
 }
 exports.login = function (req, res) {
+    const { error, value } = userService.validateLogin(req.body);
+    if(error){
+        return res.send(error);
+    }
     User.findOne({ username: req.body.username }).exec(function (err, doc) {
         if (!err) {
             if (doc != null) {
