@@ -7,15 +7,6 @@ exports.signup = function (req, res) {
     if (error) {
         return res.send(error);
     }
-    // else{
-    //     res.send(value);
-    // }
-    //res.send(value);
-    //res.send(userService.validateSignup(req.body));
-    // if(userService.validatePassword(req.body.password) == false){
-    //     return res.send("Mật khẩu quá ngắn");
-    // }else if(userService.validateAge(req.body.age) == false){
-    //     return res.send("Vui lòng nhập số tuổi hợp lệ");
     if (userService.validateConfirmPassword(req.body.password, req.body.confirmPassword) == false) {
         return res.send("Mật khẩu xác nhận không chính xác")
     }

@@ -9,7 +9,15 @@ ví dụ về Restful API link github: https://github.com/buithanhlong16110139/T
 - viết đầy tên thuộc tính và collection, tránh viết tắt trừ khi cụm danh từ quá dài(đặc biệt)
 3. Ưu tiên vấn đề bảo mật
 - Sử dụng bcrypt để mã hóa mật khẩu (bảo mật hơn các module khác - tốc độ mã hóa thấp hơn)
-4. Bất đồng bộ
+4. Bất đồng bộ:
+- sử dụng async/await khi cần trả về giá trị và đợi lệnh thực khi để chạy lệnh tiếp theo
+- sử dụng khi kết nối với database mà cần giá trị trả về
+- cần sử dụng hợp lý (ko lạm dụng) để tránh ảnh hưởng tới server
+5. Jsonwebtoken:
+- giúp định danh user
++ tạo token mang theo thông tin của user (dưới dạng mã hóa)
++ nhận dạng thông tin và các quyền của user
++ jwt mã hóa 2 chiều
 - Sử dụng async/await khử bất đồng bộ (sử dụng hợp lý để tránh pending server - khi nào cần trả về giá trị thì dùng)
 ***** Link tham khảo
 - https://code.tutsplus.com/vi/tutorials/build-web-application-using-nodejs--cms-29652
