@@ -9,11 +9,16 @@ ví dụ về Restful API link github: https://github.com/buithanhlong16110139/T
 - viết đầy tên thuộc tính và collection, tránh viết tắt trừ khi cụm danh từ quá dài(đặc biệt)
 3. Ưu tiên vấn đề bảo mật
 - Sử dụng bcrypt để mã hóa mật khẩu (bảo mật hơn các module khác - tốc độ mã hóa thấp hơn)
-4. Bất đồng bộ:
+4. Bất đồng bộ: gồm callback, promise và async/await
 - sử dụng async/await khi cần trả về giá trị và đợi lệnh thực khi để chạy lệnh tiếp theo
 - sử dụng khi kết nối với database mà cần giá trị trả về
 - cần sử dụng hợp lý (ko lạm dụng) để tránh ảnh hưởng tới server
+- khi các lệnh trong cùng 1 function ko liên quan tới nhau ta không cần sử dụng async/await và ngược lại
+vd: đầu vào của lệnh thứ 2 là kết quả của lệnh thứ 1 ta cần await lệnh thứ nhất
 - ví dụ trên link github: https://github.com/buithanhlong16110139/ThucTapHe
+- chú ý các trường hợp sử dụng bất đồng bộ bên trong loop, sử dụng hợp lý để tăng performance của chương trình
+	+ có thể cân nhắc việc sử dụng map() để thay thế cho for hoặc foreach (trong trường hợp đã đồng bộ)
+	link tham khảo: https://anonystick.com/javascript-asyncawait-sai-lam-trong-cach-su-dung-2019051311182164.jsx
 5. Jsonwebtoken:
 - giúp định danh user
 + tạo token mang theo thông tin của user (dưới dạng mã hóa)

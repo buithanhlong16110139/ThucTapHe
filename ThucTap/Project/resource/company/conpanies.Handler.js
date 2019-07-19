@@ -1,0 +1,1 @@
+import CompaniesModel from './companies.Models'

@@ -70,30 +70,44 @@ app.use(function (req, res, next) {
 //app.use('/users', users);
 //app.use('/books', books);
 
-//Bất đồng bộ
-app.get('/', function () {
-  const User = require('./routes/users/user.Models');
-  execute()
+// //Bất đồng bộ
+// app.get('/', function () {
+//   const User = require('./routes/users/user.Models');
+//   // async function fetchOwners(catIDs) {
+//   //   const owners = [];
+//   //   for (const id of catIDs) {
+//   //     const cat = await fetchCat(id);// get detail object Cat
+//   //     const owner = await fetchOwner(cat.ownerID); //find owner via ownerID
+//   //     owners.push(owner);
+//   //   }
+//   //   return owners;
+//   // }
+//   // const owners = catIDs.map(id => {
+//   //   const cat = fetchCatSync(id);
+//   //   const owner = fetchOwnerSync(cat.ownerID);
+//   //   return owner;
+//   // });
+//   execute()
 
-  async function execute() {
-    let result = await findResult()
-    console.log("bước 3");///second
-  }
+//   async function execute() {
+//     let result = await findResult()
+//     console.log("bước 3");///second
+//   }
 
-  async function findResult() {
-    for (let i = 0; i < 1000000000; i++) {
-      let j = 100
-    }
+//   async function findResult() {
+//     for (let i = 0; i < 1000000000; i++) {
+//       let j = 100
+//     }
 
-    console.log('Bước 1');///first
+//     console.log('Bước 1');///first
 
-    let result = await User.collection.findOne({ username: 'long14a12dgl' });
-    console.log("Bước 2");///third
-    console.log(result);
-    //console.log('after findResult');
-    return(result);
-  }
-})
+//     let result = await User.collection.findOne({ username: 'long14a12dgl' });
+//     console.log("Bước 2");///third
+//     console.log(result);
+//     //console.log('after findResult');
+//     return(result);
+//   }
+// })
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

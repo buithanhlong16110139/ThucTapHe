@@ -36,8 +36,8 @@ app.post('/test/login', (req, res) => {
 })
 
 function verifyToken(req, res, next) {
-    const bearerHeader = req.headers['authorization'];
-
+    const bearerHeader = req.headers['token'];
+    console.log(bearerHeader)
     if (typeof bearerHeader != 'undefined') {
         const bearer = bearerHeader.split(' ');
 
