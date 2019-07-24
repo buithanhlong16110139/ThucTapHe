@@ -1,18 +1,28 @@
 import companyHandler from '../handlers/company.Handler'
-import { getEnabledCategories } from 'trace_events';
 
-export default{
-    async create(req, res){
+export default {
+    async create(req, res) {
         try {
-            const company = await companyHandler.createNewCompany(req.body.companyName, req.body.companyCode);
-            //console.log(company);
-            const categoryCompany = await companyHandler.createCategoryCompany(req.body.categoryId, company._id);
-            return res.send({
-                data: company,
-                data1: categoryCompany,
-                error: null,
-                success: 'ok'
-            })
+            const {
+                companyName,
+                companyCode,
+                categoryId
+            } = req.body
+            const newComapany = await companyHandler.createNewCompany(companyName, companyCode);
+            const newCategoryCompany = await companyHandler.createCategoryCompany(categoryId, newComapany._id);
+            if(newCategoryCompany==true){
+                return res.send({
+                    data: newCompany,
+                    error: null,
+                    success: 'ok'
+                })
+            }else{
+                return res.send({
+                    data: newCompany,
+                    error: null,
+                    success: 'ok'
+                })
+            }
         } catch (error) {
             res.send({
                 data: null,
@@ -21,7 +31,7 @@ export default{
             })
         }
     },
-    async getAll(req, res){
+    async getAll(req, res) {
         try {
             const company = await companyHandler.getCompany();
             return res.send({
@@ -37,9 +47,10 @@ export default{
             })
         }
     },
-    async getOne(req, res){
+    async getOne(req, res) {
         try {
-            const company = await companyHandler.getOneCompany(req.params.id);
+            const companyId = req.params.id;
+            const company = await companyHandler.getOneCompany(companyId);
             return res.send({
                 data: company,
                 error: null,
@@ -53,11 +64,16 @@ export default{
             })
         }
     },
-    async update(req, res){
+    async update(req, res) {
         try {
-            const company = await companyHandler.updateCompany(req.params.id, req.body.companyName, req.body.companyCode);
+            const {
+                companyId,
+                companyName,
+                companyCode
+            } = req.body;
+            const result = await companyHandler.updateCompany(companyId, companyName, companyCode);
             return res.send({
-                data: company,
+                data: result,
                 error: null,
                 success: 'ok'
             })
@@ -69,9 +85,10 @@ export default{
             })
         }
     },
-    async delete(req, res){
+    async delete(req, res) {
         try {
-            const company = await companyHandler.deleteCompany(req.params.id);
+            const companyId = req.params.id;
+            const company = await companyHandler.deleteCompany(companyId);
             return res.send({
                 data: company,
                 error: null,

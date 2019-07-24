@@ -29,5 +29,15 @@ vd: đầu vào của lệnh thứ 2 là kết quả của lệnh thứ 1 ta c�
 - const: khai báo hằng số ko thay đổi trong suốt quá trình chạy
 - let: chỉ truy cập sử dụng trong block bao quanh nó, ngoài block không có tác dụng
 - var: trong function chứa biến kiểu var thì biến đó có thể truy cập mọi lúc
+7. Truy vấn mongodb
+*Truy vấn logic
+- $or:
+cú pháp: { $or: [ { <expression1> }, { <expression2> }, ... , { <expressionN> } ] }
+sẽ chọn ra các trường dữ liệu đáp ứng ít nhất 1 trong số các expressions trong mảng.
+ví dụ: 
+(*): db.inventory.find( { $or: [ { quantity: { $lt: 20 } }, { price: 10 } ] } )
+trả về tất cả trường dữ liệu của "inventory" mà một trong 2 giá trị "quantity" ít hơn 20 
+hoặc "price" bằng 10.
+note: mỗi expression có thể sử dụng chỉ mục, khi đó mongodb sẽ duyệt mảng theo chỉ mục
 ***** Link tham khảo
 - https://code.tutsplus.com/vi/tutorials/build-web-application-using-nodejs--cms-29652

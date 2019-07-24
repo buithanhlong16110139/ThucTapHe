@@ -80,5 +80,21 @@ export default{
                 success: null
             })
         }
+    },
+    async getAllCompanyOfCategory(req, res){
+        try {
+            const result = await categoryHandler.getCompanyOfCategory(req.params.id);
+            return res.send({
+                data: result,
+                error: null,
+                success: 'ok'
+            })
+        } catch (error) {
+            return res.send({
+                data: null,
+                error: error,
+                success: null
+            })
+        }
     }
 }

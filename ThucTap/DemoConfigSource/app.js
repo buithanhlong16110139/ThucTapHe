@@ -2,6 +2,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import {connect} from './configs/db';
 import {router} from './routes/index';
+import jsonwebtoken from 'jsonwebtoken'
 
 const port = 3000;
 const app = express();
