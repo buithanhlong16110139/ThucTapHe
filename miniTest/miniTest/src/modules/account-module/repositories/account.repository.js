@@ -16,6 +16,13 @@ const getAccountByEmail = async (email) => {
     return result;
 };
 
+const getAccountByFacebookId = async (facebookId) =>{
+    const result = await AccountSchema.findOne({
+        'facebook.facebookId': facebookId
+    });
+    return result;
+};
+
 const getPayloadJwtSchema = (account) => {
     return {
         accountId: account._id,
@@ -34,6 +41,38 @@ const updateAccount = async (email, data) => {
     if (result.n !== 0) return true;
     return false;
 };
+
+const updateGoogleToken = async (email, token) =>{
+    const result = await AccountSchema.updateOne({
+        email
+    }, {
+        'google.googleToken': token
+    });
+    if(result.n !== 0) return true;
+    return false;
+};
+
+const updateFacebookToken = async (facebookId, token) =>{
+    const result = await AccountSchema.updateOne({
+        'facebook.facebookId': facebookId
+    }, {
+        'facebook.facebookToken': token
+    });
+    if(result.n !== 0) return true;
+    return false;
+};
+
+const isExistedAccountWithEmail = async (email) =>{
+    const result = await AccountSchema.findOne({ email });
+    return result;
+};
+
+const isExistedAccountWithFacebookId = async (facebookId) =>{
+    const result = await AccountSchema.findOne({
+        'facebook.facebookId': facebookId
+    });
+    return result;
+}
 export default {
     create,
     isExistedEmail,
@@ -41,4 +80,9 @@ export default {
     getPayloadJwtSchema,
     getAccountById,
     updateAccount,
+    isExistedAccountWithEmail,
+    updateGoogleToken,
+    isExistedAccountWithFacebookId,
+    updateFacebookToken,
+    getAccountByFacebookId,
 };

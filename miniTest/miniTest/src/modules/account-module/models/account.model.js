@@ -10,9 +10,6 @@ const AccountSchema = new Schema({
     email: {
         type: String,
     },
-    phone: {
-        type: String,
-    },
     local: {
         password: {
             type: String
@@ -23,12 +20,12 @@ const AccountSchema = new Schema({
         facebookToken: String,
         facebookName: String,
         facebookPhone: String,
+        facebookEmail: String,
     },
     google: {
         googleId: String,
         googleToken: String,
         googleName: String,
-        googlePhone: String,
     },
 });
 

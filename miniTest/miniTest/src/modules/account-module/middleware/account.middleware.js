@@ -47,23 +47,23 @@ const logInAccountInput = (req, res, next) => {
 
 const loginWithFacebookInput = (req, res, next) => {
     const {
-        email,
         facebook,
     } = req.body;
     try {
         if (!req.body) throw LoginWithFacebookErrors.NO_DATA;
-        if (!email) throw LoginWithFacebookErrors.NO_EMAIL;
-        if (!Validator.isEmail(email)) throw LoginWithFacebookErrors.INVALID_EMAIL;
         if (!facebook) throw LoginWithFacebookErrors.NO_FACEBOOK;
+        if(!facebook.facebookPhone && !facebook.facebookEmail) throw LoginWithFacebookErrors.NO_EMAIL_AND_PHONE;
+        if (facebook.facebookPhone){
+            if(!Validator.isNumeric(facebook.facebookPhone)) throw LoginWithFacebookErrors.INVALID_FACEBOOK_PHONE;
+        };
+        if(facebook.facebookEmail){
+            if(!Validator.isEmail(facebook.facebookEmail)) throw LoginWithFacebookErrors.INVALID_FACEBOOK_EMAIL;
+        }
         if (!facebook.facebookId) throw LoginWithFacebookErrors.NO_FACEBOOK_ID;
         if (!facebook.facebookToken) throw LoginWithFacebookErrors.NO_FACEBOOK_TOKEN;
         if (!facebook.facebookName) throw LoginWithFacebookErrors.NO_FACEBOOK_NAME;
-        if (facebook.facebookPhone) {
-            if (!Validator.isNumeric(facebook.facebookPhone)) throw LoginWithFacebookErrors.INVALID_FACEBOOK_PHONE;
-        }
         req.body = {
-            email,
-            facebook,
+            facebook
         };
         return next();
     } catch (error) {
@@ -96,8 +96,6 @@ const logInWithGoogleInput = (req, res, next) => {
         if (!google.googleId) throw LoginWithGoogleErrors.NO_GOOGLE_ID;
         if (!google.googleToken) throw LoginWithGoogleErrors.NO_GOOGLE_TOKEN;
         if (!google.googleName) throw LoginWithGoogleErrors.NO_GOOGLE_NAME;
-        if (!google.googlePhone) throw LoginWithGoogleErrors.NO_GOOGLE_PHONE;
-        if (!Validator.isNumeric(google.googlePhone)) throw LoginWithGoogleErrors.INVALID_GOOGLE_PHONE;
         return next();
     } catch (error) {
         return res.onError(new ValidationError(error));
