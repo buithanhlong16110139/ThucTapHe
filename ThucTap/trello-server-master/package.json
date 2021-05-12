@@ -39,7 +39,7 @@
         "morgan": "^1.9.0",
         "node-uuid": "^1.4.8",
         "node-webhooks": "^1.4.0",
-        "nodemailer": "^4.6.7",
+        "nodemailer": "^6.4.16",
         "nodemailer-mandrill-transport": "^1.2.0",
         "passport": "^0.4.0",
         "passport-jwt": "^3.0.1",
